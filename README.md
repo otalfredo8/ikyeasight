@@ -1,6 +1,6 @@
 # IKYEASight
-IKYEASight is a Business Intelligence (BI) and Data Analytics initiative focused on the end-to-end lifecycle of IKYEA businesses’ data.
 
+IKYEASight is a Business Intelligence (BI) and Data Analytics initiative focused on the end-to-end lifecycle of IKYEA businesses’ data.
 
 ```mermaid
 %%{init: {'flowchart': {'rankSpacing': 30}}}%%
@@ -32,11 +32,7 @@ flowchart TB
     style Ubuntu_Installation text-align:left
 
     Odoo_Installation["**Odoo Installation** 📦
-    <a href='./OdooInstallation.md'>(Click Here)</a>"]
+    <a href='./docs/OdooInstallation.md'>(Click Here)</a>"]
 
     Ubuntu_Installation --> Odoo_Installation
 ```
-
-###Testing Second Diagram
-
-
