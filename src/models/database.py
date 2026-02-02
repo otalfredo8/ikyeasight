@@ -1,11 +1,11 @@
 import pandas as pd
 from sqlalchemy import create_engine
-import queries
+from .queries import GET_PARTNERS
 
 class PartnerModel:
     def __init__(self, config):
         self.config = config
-        self.query = queries.GET_PARTNERS
+        self.query = GET_PARTNERS
 
     def fetch_all_data(self):
         all_data = []
