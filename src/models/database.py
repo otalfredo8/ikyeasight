@@ -1,17 +1,11 @@
 import pandas as pd
 from sqlalchemy import create_engine
+import queries
 
 class PartnerModel:
     def __init__(self, config):
         self.config = config
-        self.query = """
-            SELECT p.name, p.street, p.city, p.zip,
-                   p.partner_latitude as lat, p.partner_longitude as lon,
-                   c.code as country_code
-            FROM res_partner p
-            LEFT JOIN res_country c ON p.country_id = c.id
-            WHERE p.active = True AND p.is_company = False;
-        """
+        self.query = queries.GET_PARTNERS
 
     def fetch_all_data(self):
         all_data = []

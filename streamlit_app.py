@@ -9,9 +9,9 @@ st.set_page_config(page_title="IKYEASight Dashboard", layout="wide")
 
 # 1. Setup Configuration (In a real app, use st.secrets for passwords!)
 CONFIG = {
-    'I-Clothing': 'postgresql://odoo:Admin123Admin123@192.168.1.249:5432/odoo19_bat_dev',
-    'I-Furniture': 'postgresql://odoo:userodoo123@23.122.200.31:5432/odoo_stg',
-    'I-Restaurant': 'postgresql://odoo:Admin123Admin123@34.63.102.13:5432/odoo19_gc_db' 
+    'I-Clothing': st.secrets["DB_CLOTHING"],
+    'I-Furniture': st.secrets["DB_FURNITURE"],
+    'I-Restaurant': st.secrets["DB_RESTAURANT"]
 }
 
 st.title("🌍 IKYEASight: Global Partner Mapper")
@@ -48,5 +48,11 @@ if 'data' in st.session_state:
     # Show Raw Data Table below
     with st.expander("See Raw Partner Data"):
         st.dataframe(df)
+        st.download_button(
+            label="📥 Download Data as CSV",
+            data=df.to_csv(index=False).encode('utf-8'),
+            file_name='ikyea_partners.csv',
+            mime='text/csv'
+        )
 else:
     st.info("Click the 'Sync & Geocode Data' button in the sidebar to start.")
