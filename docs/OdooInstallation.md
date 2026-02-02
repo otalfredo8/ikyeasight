@@ -52,7 +52,7 @@ flowchart TB
                 /etc/nginx/sites-available/odoo-stg
                 dev.craft2orbit.xyz
                 stg.craft2orbit.xyz
-                <a href='./dev_nginx_dual_server_reverse_proxy.md'>(Click Here)</a>"]
+                <a href='https://github.com/otalfredo8/ikyeasight/blob/main/docs/dev_nginx_dual_server_reverse_proxy.md'>(Click Here)</a>"]
 
         end
 

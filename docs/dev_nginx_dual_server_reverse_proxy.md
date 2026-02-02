@@ -11,7 +11,7 @@ flowchart TB
         nat[Port Forwarding: 80/443]
     end
 
-    subgraph stg_server ["<a href='./IKYEASight_setup.md'>STG Server - Gateway</a>"]
+    subgraph stg_server ["<a href='https://github.com/otalfredo8/ikyeasight'>STG Server - Gateway</a>"]
         direction TB
         nginx_stg[Nginx stg.craft2orbit.xyz]
         nginx_dev_proxy[Nginx dev.craft2orbit.xyz]
