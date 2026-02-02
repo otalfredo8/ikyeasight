@@ -36,3 +36,7 @@ flowchart TB
 
     Ubuntu_Installation --> Odoo_Installation
 ```
+
+## IKYEASight
+
+https://ikyeasight.streamlit.app/
