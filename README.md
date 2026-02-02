@@ -32,7 +32,7 @@ flowchart TB
     style Ubuntu_Installation text-align:left
 
     Odoo_Installation["**Odoo Installation** 📦
-    <a href='docs/OdooInstallation.md'>(Click Here)</a>"]
+    <a href='https://github.com/otalfredo8/ikyeasight/blob/main/docs/OdooInstallation.md'>(Click Here)</a>"]
 
     Ubuntu_Installation --> Odoo_Installation
 ```
