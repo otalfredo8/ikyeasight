@@ -2,7 +2,9 @@
 .venv/
 __pycache__
 *.pyc
-data/
+data/*.csv
+data/*.parquet
+data/*.zip
 output/
 .streamlit/
 *.html

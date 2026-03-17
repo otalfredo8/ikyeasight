@@ -18,7 +18,12 @@ def main():
     controller = GeoController()
     df_processed = controller.process_coordinates(df)
 
-    # 3. VIEW: Create Visual
+    # 3. CACHE: Save processed data to avoid re-geocoding
+    if not os.path.exists("data"): os.makedirs("data")
+    df_processed.to_parquet("data/partners_processed_coordinates.parquet", index=False)
+    print("💾 Cached processed coordinates to data/partners_processed_coordinates.parquet")
+
+    # 4. VIEW: Create Visual
     view = MapView()
     map_obj = view.render(df_processed)
 

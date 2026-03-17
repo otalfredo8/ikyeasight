@@ -40,3 +40,8 @@ flowchart TB
 ## IKYEASight
 
 https://ikyeasight.streamlit.app/
+
+## Data Sources
+
+- **Census Data**: Downloaded from [ACS 5-Year Estimates (2024)](https://data.census.gov/table/ACSST5Y2024.S1902?q=S1902)
+  - Unzip and place CSV files in the `data/` folder before running scripts
