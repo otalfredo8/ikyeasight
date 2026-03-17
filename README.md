@@ -43,5 +43,7 @@ https://ikyeasight.streamlit.app/
 
 ## Data Sources
 
-- **Census Data**: Downloaded from [ACS 5-Year Estimates (2024)](https://data.census.gov/table/ACSST5Y2024.S1902?q=S1902)
-  - Unzip and place CSV files in the `data/` folder before running scripts
+- **U.S. Census Bureau - ACS 5-Year Estimates (2024)**:
+  - Source: https://data.census.gov/table/ACSST5Y2024.S1101?g=860XX00US65054
+  - Extract and place `ACSST5Y2024.S1902-Data.csv` in the `data/` folder before running analysis
+  - File contains household income, family income, and income by demographics
