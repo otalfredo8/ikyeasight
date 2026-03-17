@@ -43,7 +43,9 @@ if 'data' in st.session_state:
     map_obj = view.render(df)
     
     # Display the Map
-    st_folium(map_obj, width=1200, height=600)
+    col1, col2, col3 = st.columns([1, 6, 1]) # Center the map
+    with col2:
+        st_folium(map_obj, width=1200, height=600)
     
     # Show Raw Data Table below
     with st.expander("See Raw Partner Data"):
