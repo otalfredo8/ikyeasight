@@ -3,11 +3,17 @@ from sqlalchemy import create_engine
 from .queries import GET_PARTNERS
 
 class PartnerModel:
+
     def __init__(self, config):
         self.config = config
         self.query = GET_PARTNERS # sql query to fetch partner data
 
     def fetch_all_data(self):
+        """
+        Fetch partner data from all brand databases
+        Returns:
+            pd.DataFrame: Combined DataFrame with partner data from all brands
+        """
         all_data = []
         for brand, conn_str in self.config.items():
             try:

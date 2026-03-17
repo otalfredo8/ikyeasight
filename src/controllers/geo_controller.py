@@ -8,6 +8,12 @@ class GeoController:
         self.geocode = RateLimiter(self.geolocator.geocode, min_delay_seconds=1)
 
     def clean_address(self, row):
+        """
+        Format address string for geocoding
+        
+        :param row (pd.Series): Data with fields: street, city, zip, country_code
+        :return: Formatted address string for geocoding
+        """
         street = str(row['street']).strip()
         country = row['country_code'] if pd.notnull(row['country_code']) else 'US'
         if street in ['NULL', 'None', 'nan', ''] or row['street'] is None: # no street no problem
@@ -15,6 +21,12 @@ class GeoController:
         return f"{street}, {row['city']}, {row['zip']}, {country}" # single formated address string
 
     def process_coordinates(self, df):
+        """
+        Process and update coordinates in the DataFrame
+        
+        :param df (pd.DataFrame): DataFrame with partner data including address fields
+        :return: DataFrame with updated latitude and longitude columns
+        """
         df['clean_address'] = df.apply(self.clean_address, axis=1) # to clean_address column add a cleaned address row by row
         for index, row in df.iterrows():
             if row['lat'] == 0 or pd.isnull(row['lat']):

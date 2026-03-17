@@ -12,9 +12,15 @@ class MapView:
         }
 
     def render(self, df):
-        # Create and center map on US coordinates
+        """
+        Render map with clustered markers
+        Args:
+            df (pd.DataFrame):DataFrame with partner data (name, lat, lon, brand)
+        Returns:
+            folium.Map: Interactive map object with clustered markers
+        """
         m = folium.Map(location=[37.0902, -95.7129], 
-                       zoom_start=4, tiles='CartoDB voyager')
+                       zoom_start=4, tiles='CartoDB voyager') # Create and center map on US coordinates
         
         marker_cluster = MarkerCluster().add_to(m) # clustered markers
         
