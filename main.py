@@ -4,7 +4,7 @@ from src.controllers.geo_controller import GeoController
 from src.views.map_view import MapView
 
 CONFIG = {
-    'I-Clothing': 'postgresql://odoo:Admin123Admin123@192.168.1.249:5432/odoo19_bat_dev',
+    'I-Clothing': 'postgresql://odoo:Admin123Admin123@dev.craft2orbit.xyz:5432/odoo19_bat_dev',
     'I-Furniture': 'postgresql://odoo:userodoo123@23.122.200.31:5432/odoo_stg',
     'I-Restaurant': 'postgresql://odoo:Admin123Admin123@136.112.69.211:5432/odoo19_gc_db'
 }
