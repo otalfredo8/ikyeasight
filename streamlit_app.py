@@ -29,6 +29,24 @@ with st.sidebar:
     
     cached_file = "data/partners_processed_coordinates.parquet"
     
+    if st.button("🔍 Test Database Connections"):
+        st.info("Testing connectivity to all databases...")
+        from sqlalchemy import create_engine, text
+        
+        for brand, conn_str in CONFIG.items():
+            try:
+                # Extract host for display
+                host = conn_str.split("@")[1].split(":")[0]
+                with st.spinner(f"Testing {brand} ({host})..."):
+                    engine = create_engine(conn_str)
+                    with engine.connect() as conn:
+                        conn.execute(text("SELECT 1"))
+                    st.success(f"✅ {brand}: Reachable ({host})")
+            except Exception as e:
+                st.error(f"❌ {brand}: Unreachable - {str(e)}")
+    
+    st.divider()
+    
     if st.button("⚡ Use Cached Data"):
         if os.path.exists(cached_file):
             import pandas as pd
@@ -42,15 +60,20 @@ with st.sidebar:
         with st.spinner("Fetching data from Odoo and calculating coordinates..."):
             # EXECUTE MVC FLOW (slow - does geocoding)
             df_raw = model.fetch_all_data()
-            df_processed = controller.process_coordinates(df_raw)
             
-            # Save to cache for next time (parquet is faster & compressed)
-            os.makedirs("data", exist_ok=True)
-            df_processed.to_parquet(cached_file, index=False)
-            
-            # Save to session state so it doesn't disappear on refresh
-            st.session_state['data'] = df_processed
-            st.success(f"✅ Loaded & cached {len(df_processed)} partners!")
+            if len(df_raw) == 0:
+                st.error("❌ No partners found! Check database connections.")
+            else:
+                st.info(f"📊 Brands found: {df_raw['brand'].unique().tolist()}")
+                df_processed = controller.process_coordinates(df_raw)
+                
+                # Save to cache for next time (parquet is faster & compressed)
+                os.makedirs("data", exist_ok=True)
+                df_processed.to_parquet(cached_file, index=False)
+                
+                # Save to session state so it doesn't disappear on refresh
+                st.session_state['data'] = df_processed
+                st.success(f"✅ Loaded & cached {len(df_processed)} partners!")
 
 # Main Display Logic
 if 'data' in st.session_state:
