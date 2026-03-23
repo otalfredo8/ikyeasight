@@ -1,0 +1,9 @@
+# IKYEASight Documentation
+
+title: IKYEASight
+description: Documentation for the IKYEASight project
+theme: minima
+
+# Build settings
+plugins:
+  - jekyll-feed
