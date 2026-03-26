@@ -1,9 +1,21 @@
-# IKYEASight Documentation
-
 title: IKYEASight
-description: Documentation for the IKYEASight project
+description: Business Intelligence & Data Analytics for IKYEA Businesses
 theme: minima
+
+url: "https://otalfredo8.github.io"
+baseurl: "/ikyeasight"
+
+author:
+  name: IKYEA Team
 
 # Build settings
 plugins:
   - jekyll-feed
+
+# Navigation
+header_pages:
+  - index.md
+  - getting-started.md
+  - architecture.md
+  - api-reference.md
+  - infrastructure.md
