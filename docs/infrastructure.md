@@ -30,7 +30,7 @@ flowchart TB
 
     subgraph Router [AT&T Router]
         direction TB
-        public_ip([Public IP: 23.122.200.31])
+        public_ip([Public IP: X.X.X.X])
         nat[Port Forwarding: 80/443]
     end
 
@@ -120,7 +120,7 @@ flowchart TB
                 - sudo chown odoo:odoo /opt/odoo
                 - sudo chmod 775 /opt/odoo"]
 
-            odoo_clonigAndRequirements["Cloning and requirements installation<br/>
+            odoo_cloningAndRequirements["Cloning and requirements installation<br/>
                 - git clone https://github.com/odoo/odoo<br/> --depth 1 --branch 18.0 odoo
                 - cd /opt/odoo/odoo
                 - python3 -m venv venv
@@ -130,8 +130,8 @@ flowchart TB
             odoo_conf["sudo nano /etc/odoo.conf<br/>
                 [options]
                 db_user = odoo
-                db_password = DB_PASSWORD
-                admin_passwd = ODOO_APP_PASSWORD
+                db_password = &lt;YOUR_DB_PASSWORD&gt;
+                admin_passwd = &lt;YOUR_ODOO_MASTER_PASSWORD&gt;
                 xmlrpc_interface = 0.0.0.0
                 addons_path = /opt/odoo/odoo/addons,/opt/odoo/custom_addons
                 data_dir = /var/lib/odoo"]
@@ -181,11 +181,11 @@ flowchart TB
     systemctl -.- local
     systemctl --- nginx
     odoo_install --- odoo_folderStructure
-    odoo_folderStructure --- odoo_clonigAndRequirements
-    odoo_clonigAndRequirements --- odoo_conf
+    odoo_folderStructure --- odoo_cloningAndRequirements
+    odoo_cloningAndRequirements --- odoo_conf
 
     classDef smallNode padding:5px,font-size:10.5px,font-weight:bold,text-align:left;
-    class pg_install,pg_auth,pg_conf,odoo_install,odoo_folderStructure,odoo_clonigAndRequirements,odoo_conf,postgres,odoo,systemctl smallNode
+    class pg_install,pg_auth,pg_conf,odoo_install,odoo_folderStructure,odoo_cloningAndRequirements,odoo_conf,postgres,odoo,systemctl smallNode
 ```
 
 ---
